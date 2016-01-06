@@ -1,0 +1,24 @@
+CREATE TABLE photos
+(
+	photoid INT(10) unsigned ZEROFILL NOT NULL auto_increment,
+	artist INT unsigned NOT NULL REFERENCES users(userid),
+	
+	charity INT unsigned NOT NULL REFERENCES charities(charityid),
+	title CHAR(50) NOT NULL,
+	description VARCHAR(255) NOT NULL,
+	datetaken DATE NOT NULL,
+	localid INT unsigned REFERENCES locations.localid,
+	
+	submitdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	
+	origfn VARCHAR(50) NOT NULL,
+	tb CHAR(50),
+	spreview CHAR(50),
+	lpreview CHAR(50),
+	full CHAR(50) NOT NULL,
+
+	approved tinyint(1) NOT NULL DEFAULT 0,
+	active tinyint(1) NOT NULL DEFAULT 1,
+	
+	PRIMARY KEY (photoid)
+);
